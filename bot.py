@@ -1,6 +1,6 @@
 import discord
 import responses
-
+import config
 
 async def send_message(message, user_message, is_private): 
     try: 
@@ -11,7 +11,7 @@ async def send_message(message, user_message, is_private):
         print (e) 
 
 def run_discord_bot():
-    TOKEN = "MTE5MDA0NTQzNDk5MTg3ODI3Nw.Gdp-O8.4cc9adCemFogHEe2_7pO8SQQFOGvdHVsOYsNko"
+
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents = intents)
@@ -37,4 +37,4 @@ def run_discord_bot():
         else:
             await send_message(message,user_message, is_private= False)
         
-    client.run(TOKEN)
+    client.run(config.TOKEN)
