@@ -4,6 +4,7 @@ from discord.ext import commands
 from youtubesearchpython import VideosSearch  
 from yt_dlp import YoutubeDL
 import asyncio
+import random 
 
 class music(commands.Cog):
     def __init__(self, bot):
@@ -148,3 +149,7 @@ class music(commands.Cog):
     async def re(self, ctx):
         self.music_queue.pop()
         await ctx.send("```last song removed```")
+    
+    @commands.command(name="roll", help="rolls a six sided die")
+    async def help(self, ctx):
+        await ctx.send(str(random.randint(1,6)))
