@@ -1,6 +1,9 @@
 import discord
 import responses
 import config
+from discord.ext import commands 
+from help_cog import help_cog
+from music import music 
 
 async def send_message(message, user_message, is_private): 
     try: 
@@ -11,7 +14,6 @@ async def send_message(message, user_message, is_private):
         print (e) 
 
 def run_discord_bot():
-
     intents = discord.Intents.default()
     intents.message_content = True
     client = discord.Client(intents = intents)
@@ -36,5 +38,5 @@ def run_discord_bot():
             await send_message(message,user_message, is_private= True)
         else:
             await send_message(message,user_message, is_private= False)
-        
+    bot.run(config.TOKEN)
     client.run(config.TOKEN)
