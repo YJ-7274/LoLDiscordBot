@@ -5,8 +5,9 @@ from youtubesearchpython import VideosSearch
 from yt_dlp import YoutubeDL
 import asyncio
 import random 
+import responses
 
-class music(commands.Cog):
+class functionality(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
@@ -149,7 +150,24 @@ class music(commands.Cog):
     async def re(self, ctx):
         self.music_queue.pop()
         await ctx.send("```last song removed```")
-    
-    @commands.command(name="roll", help="rolls a six sided die")
-    async def help(self, ctx):
-        await ctx.send(str(random.randint(1,6)))
+
+    @commands.command(name="miscellanious functions", aliases=["msf"], help="keyword for some small fun commands")
+    async def msf(self, ctx, *args):
+        user_message = " ".join(args)
+
+        async def send_message(user_message, is_private): 
+            try: 
+                response = responses.get_response(user_message)
+                await ctx.message.author.send(response) if is_private else await ctx.message.channel.send(response)
+
+            except Exception as e: 
+                print (e) 
+                
+        if user_message[0] == '?':
+            user_message = user_message[1:]
+            await send_message(user_message, is_private= True)
+        else:
+            await send_message(user_message, is_private= False)
+
+
+

@@ -4,7 +4,7 @@ import config, asyncio
 
 #import all of the cogs
 from help_cog import help_cog
-from music import music
+from functionality import functionality
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='/', intents=intents)
@@ -15,7 +15,7 @@ bot.remove_command('help')
 async def main():
     async with bot:
         await bot.add_cog(help_cog(bot))
-        await bot.add_cog(music(bot))
+        await bot.add_cog(functionality(bot))
         await bot.start(config.TOKEN)
 
 asyncio.run(main())

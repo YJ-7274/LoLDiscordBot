@@ -22,7 +22,7 @@ General commands:
 {self.bot.command_prefix}resume - resumes playing the current song
 {self.bot.command_prefix}prefix - change command prefix
 {self.bot.command_prefix}remove - removes last song from the queue
-{self.bot.command_prefix}roll - rolls a standard 6 sided die and returns the value
+{self.bot.command_prefix}msf - allows access to a library of smaller commands (type /msf list for the list of miscellanious functions)
 ```
 """
 
