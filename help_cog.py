@@ -23,6 +23,7 @@ General commands:
 {self.bot.command_prefix}prefix - change command prefix
 {self.bot.command_prefix}remove - removes last song from the queue
 {self.bot.command_prefix}msf - allows access to a library of smaller commands (type /msf list for the list of miscellanious functions)
+{self.bot.command_prefix}memes (type subreddit here) - displays a random top meme from a requested subreddit
 ```
 """
 

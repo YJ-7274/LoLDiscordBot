@@ -6,6 +6,7 @@ from yt_dlp import YoutubeDL
 import asyncio
 import random 
 import responses
+import praw
 
 class functionality(commands.Cog):
     def __init__(self, bot):
@@ -168,6 +169,26 @@ class functionality(commands.Cog):
             await send_message(user_message, is_private= True)
         else:
             await send_message(user_message, is_private= False)
+    
+    @commands.command(name="memes", help="inserts the top 5 memes of the requested subreddit into the chat")
+    async def memes(self, ctx, *args):
+        reddit = praw.Reddit(client_id = "TnWvxUmpdviA1e6P835J0w", client_secret = "PZXvlz0dCSRWbGByMw_P-xBjSiSOvw", username = "TundraShredder855", 
+                     password = "Armada855", user_agent = "TundraShredder")
+        all_subs = []
+        sub_name = "".join(args)
+        subreddit1 = reddit.subreddit(sub_name)
+        top = subreddit1.top(limit = 50)
+        for submission in top: 
+            all_subs.append(submission)
+        
+        random_sub = random.choice(all_subs)
+
+        name = random_sub.title
+        url = random_sub.url
+        em = discord.Embed(title = name)
+        em.set_image(url = url)
+        await ctx.send(embed = em)
+
 
 
 
