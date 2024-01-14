@@ -177,8 +177,8 @@ class functionality(commands.Cog):
         all_subs = []
         sub_name = "".join(args)
         subreddit1 = reddit.subreddit(sub_name)
-        top = subreddit1.top(limit = 50)
-        for submission in top: 
+        hot = subreddit1.hot(limit = 50)
+        for submission in hot: 
             all_subs.append(submission)
         
         random_sub = random.choice(all_subs)
@@ -188,6 +188,92 @@ class functionality(commands.Cog):
         em = discord.Embed(title = name)
         em.set_image(url = url)
         await ctx.send(embed = em)
+
+    @commands.command(name="randomRunes", help="generates a random combination of runes for your match. The subrunes are your choice ;D")
+    async def randomRunes(self, ctx):
+        big_Runes = ['Precision', 'Sorcery', 'Domination', 'Resolve', 'Inspiration']
+        Precision_Keystones = ['Press The Attack', 'Conqueror', 'Lethal Tempo', 'Fleet Footwork']
+        Sorcery_Keystones = ['Summon Aery', 'Arcane Comet', 'Phase Rush']
+        Domination_Keystones = ['Electrocute', 'Predator', 'Dark Harvest', 'Hail of Blades']
+        Resolve_Keystones = ['Grasp of the Undying','Aftershock','Guardian']
+        Inspiration_Keystones = ['Glacial Augment','Unsealed Spellbook','First Strike']
+
+        runes = random.sample(big_Runes,2)
+        
+        keystone = ''
+        match runes[0]: 
+            case 'Precision': 
+                keystone += random.sample(Precision_Keystones, 1)[0]
+            case 'Sorcery':
+                keystone += random.sample(Sorcery_Keystones, 1)[0]
+            case 'Domination':
+                keystone += random.sample(Domination_Keystones, 1)[0]
+            case 'Resolve':
+                keystone += random.sample(Resolve_Keystones, 1)[0]
+            case default:
+                keystone += random.sample(Inspiration_Keystones, 1)[0]
+            
+        return_value = f'{runes[0]} + {runes[1]}: Keystone = {keystone}'
+        await ctx.send(return_value)
+
+    @commands.command(name="randomItems", help="generates a random combination of items for your match")
+    async def randomItems(self, ctx):
+        itempool = [
+        "Abyssal Mask", "Anathema's Chains", "Archangel's Staff", "Ardent Censer", "Axiom Arc",
+        "Banshee's Veil", "Black Cleaver", "Blade of the Ruined King", "Bloodsong", "Bloodthirster",
+        "Bounty of Worlds", "Celestial Opposition", "Chempunk Chainsword", "Cosmic Drive", "Cryptbloom",
+        "Dawncore", "Dead Man's Plate", "Death's Dance", "Dream Maker", "Echoes of Helia",
+        "Eclipse", "Edge of Night", "Essence Reaver", "Experimental Hexplate", "Fimbulwinter",
+        "Force of Nature", "Frozen Heart", "Guardian Angel", "Guinsoo's Rageblade", "Heartsteel",
+        "Hextech Rocketbelt", "Hollow Radiance", "Horizon Focus", "Hubris", "Hullbreaker",
+        "Iceborn Gauntlet", "Immortal Shieldbow", "Imperial Mandate", "Infinity Edge", "Jak'Sho, The Protean",
+        "Kaenic Rookern", "Knight's Vow", "Kraken Slayer", "Liandry's Torment", "Lich Bane",
+        "Locket of the Iron Solari", "Lord Dominik's Regards", "Luden's Companion", "Malignance", "Manamune",
+        "Maw of Malmortius", "Mejai's Soulstealer", "Mercurial Scimitar", "Mikael's Blessing", "Moonstone Renewer",
+        "Morellonomicon", "Mortal Reminder", "Muramana", "Nashor's Tooth", "Navori Quickblades",
+        "Opportunity", "Phantom Dancer", "Profane Hydra", "Rabadon's Deathcap", "Randuin's Omen",
+        "Rapid Firecannon", "Ravenous Hydra", "Redemption", "Riftmaker", "Rod of Ages",
+        "Runaan's Hurricane", "Rylai's Crystal Scepter", "Seraph's Embrace", "Serpent's Fang", "Serylda's Grudge",
+        "Shadowflame", "Shurelya's Battlesong", "Solstice Sleigh", "Spear of Shojin", "Spirit Visage",
+        "Staff of Flowing Water", "Statikk Shiv", "Sterak's Gage", "Stormrazor", "Stormsurge",
+        "Stridebreaker", "Sundered Sky", "Sunfire Aegis", "Terminus", "The Collector",
+        "Thornmail", "Titanic Hydra", "Trailblazer", "Trinity Force", "Umbral Glaive",
+        "Unending Despair", "Vigilant Wardstone", "Void Staff", "Voltaic Cyclosword", "Warmog's Armor",
+        "Winter's Approach", "Wit's End", "Youmuu's Ghostblade", "Zaz'Zak's Realmspike", "Zeke's Convergence",
+        "Zhonya's Hourglass"
+        ]
+        
+        itemselection = random.sample(itempool, 6)
+        return_value = f'{itemselection[0]} + {itemselection[1]} + {itemselection[2]} + {itemselection[3]} + {itemselection[4]} + {itemselection[5]}'
+        await ctx.send(return_value)
+
+    @commands.command(name="randomChamp", help="generates a random champ to select for your match")
+    async def randomChamp(self, ctx):
+        champPool = [
+            "Aatrox", "Ahri", "Akali", "Akshan", "Alistar", "Amumu", "Anivia", "Annie", "Aphelios", "Ashe",
+            "Aurelion Sol", "Azir", "Bard", "Bel'Veth", "Blitzcrank", "Brand", "Braum", "Briar", "Caitlyn", "Camille",
+            "Cassiopeia", "Cho'Gath", "Corki", "Darius", "Diana", "Dr. Mundo", "Draven", "Ekko", "Elise", "Evelynn",
+            "Ezreal", "Fiddlesticks", "Fiora", "Fizz", "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves",
+            "Gwen", "Hecarim", "Heimerdinger", "Hwei", "Illaoi", "Irelia", "Ivern", "Janna", "Jarvan IV", "Jax",
+            "Jayce", "Jhin", "Jinx", "K'Sante", "Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina",
+            "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw", "LeBlanc", "Lee Sin", "Leona",
+            "Lillia", "Lissandra", "Lucian", "Lulu", "Lux", "Malphite", "Malzahar", "Maokai", "Master Yi", "Milio",
+            "Miss Fortune", "Mordekaiser", "Morgana", "Naafiri", "Nami", "Nasus", "Nautilus", "Neeko", "Nidalee", "Nilah",
+            "Nocturne", "Nunu & Willump", "Olaf", "Orianna", "Ornn", "Pantheon", "Poppy", "Pyke", "Qiyana", "Quinn",
+            "Rakan", "Rammus", "Rek'Sai", "Rell", "Renata Glasc", "Renekton", "Rengar", "Riven", "Rumble", "Ryze",
+            "Samira", "Sejuani", "Senna", "Seraphine", "Sett", "Shaco", "Shen", "Shyvana", "Singed", "Sion",
+            "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Sylas", "Syndra", "Tahm Kench", "Taliyah", "Talon",
+            "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch", "Udyr", "Urgot",
+            "Varus", "Vayne", "Veigar", "Vel'Koz", "Vex", "Vi", "Viego", "Viktor", "Vladimir", "Volibear",
+            "Warwick", "Wukong", "Xayah", "Xerath", "Xin Zhao", "Yasuo", "Yone", "Yorick", "Yuumi", "Zac",
+            "Zed", "Zeri", "Ziggs", "Zilean", "Zoe", "Zyra"
+        ]
+        champSelection = random.sample(champPool, 1)
+        return_value = f'{champSelection[0]}'
+        await ctx.send(return_value)
+    
+    
+
 
 
 

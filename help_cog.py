@@ -24,7 +24,9 @@ General commands:
 {self.bot.command_prefix}remove - removes last song from the queue
 {self.bot.command_prefix}msf - allows access to a library of smaller commands (type /msf list for the list of miscellanious functions)
 {self.bot.command_prefix}memes (type subreddit here) - displays a random top meme from a requested subreddit
-```
+{self.bot.command_prefix}randomRunes - generates a random combination of runes for your match. The subrunes are your choice ;D
+{self.bot.command_prefix}randomItems - generates a random combination of items for your match. 
+{self.bot.command_prefix}randomChamp - generates a random champ for you to use for your match. 
 """
 
   @commands.Cog.listener()
